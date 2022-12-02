@@ -1,0 +1,18 @@
+<mapper namespace="Book">
+    <select id="findById" parameterType="int">
+        select b form book b where b.id = #{id}
+    </select>
+    <select id="findByTitle" parameterType="string">
+        select b from book b where b.title = #{title}
+    </select>
+    <select id="findAll">
+        select * from book
+    </select>
+    <insert id="insert">
+        insert into book(author,publisher,title)
+        values(#{author},#{publisher},#{title})
+    </insert>
+    <delete id="deleteBook">
+        delete book where id=#{id}
+    </delete>
+</mapper>

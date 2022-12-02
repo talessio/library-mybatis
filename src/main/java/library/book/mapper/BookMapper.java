@@ -1,6 +1,6 @@
-package library.library.books.mapper;
+package library.book.mapper;
 
-import library.library.books.model.Book;
+import library.book.model.Book;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public interface BookMapper {
     void insert(Book book);
 
     @Select("select b from book b where b.title = #{title}")
-    Optional<Book> findBookByTitle(String title);
+    Optional<Book> findByTitle(String title);
 
     @Select("select b form book b where b.id = #{id}")
     Optional<Object> findById(Long bookId);
