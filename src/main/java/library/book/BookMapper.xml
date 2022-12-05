@@ -1,0 +1,25 @@
+<mapper namespace="Book">
+
+    <resultMap id="result" type="Book">
+        <result property="id" column="id"/>
+        <result property="author" column="author"/>
+        <result property="publisher" column="publisher"/>
+        <result property="title" column="title"/>
+    </resultMap>
+
+    <select id="findById" parameterType="int" resultMap="result">
+        select * from book where id = #{id};
+    </select>
+    <select id="findByTitle" parameterType="string" resultMap="result">
+        select * from book where title = #{title};
+    </select>
+    <select id="findAll" resultMap="result">
+        select * from book;
+    </select>
+    <insert id="insert">
+        insert into book(author,publisher,title) values(#{author},#{publisher},#{title});
+    </insert>
+    <delete id="deleteBook">
+        delete * from book where id=#{id};
+    </delete>
+</mapper>

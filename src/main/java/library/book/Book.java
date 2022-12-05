@@ -1,4 +1,4 @@
-package library.book.model;
+package library.book;
 
 public class Book {
 
@@ -7,7 +7,8 @@ public class Book {
     private String author;
     private String publisher;
 
-    public Book(){}
+    public Book() {
+    }
 
     public Book(Long id, String title, String author, String publisher) {
         this.id = id;
@@ -52,5 +53,10 @@ public class Book {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" + "id=" + id + ", title='" + title + '\'' + ", author='" + author + '\'' + ", publisher='" + publisher + '\'' + '}';
     }
 }

@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Book">
+
+    <resultMap id="result" type="Student">
+        <result property="id" column="ID"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="Book">
+        INSERT INTO BOOK(AUTHOR,PUBLISHER,TITLE) VALUES (#{author},#{publisher},#{title});
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <select id="findAll" resultMap="result">
+        SELECT *
+        FROM BOOK;
+    </select>
+
+    <select id="findById" parameterType="int" resultMap="result">
+        SELECT *
+        FROM BOOK
+        WHERE ID = #{id};
+    </select>
+
+    <select id="findByTitle" parameterType="string" resultMap="result">
+        SELECT *
+        FROM BOOK
+        WHERE TITLE = #{title};
+    </select>
+
+    <update id="update" parameterType="Book">
+        UPDATE BOOK
+        SET TITLE     = #{title},
+            AUTHOR    = #{title},
+            PUBLISHER = #{publisher}
+        WHERE ID = #{id};
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM BOOK
+        WHERE ID = #{id};
+    </delete>
+
+</mapper>
