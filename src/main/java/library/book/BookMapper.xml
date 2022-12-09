@@ -16,6 +16,19 @@
     <select id="findAll" resultMap="result">
         select * from book;
     </select>
+    <update id="update" parameterType="Book">
+        update book
+        <if test="publisher != null">
+            set publisher = #{publisher},
+        </if>
+        <if test="author != null">
+            author = #{author},
+        </if>
+        <if test="title != null">
+            title = #{title}
+        </if>
+        where id = #{id};
+    </update>
     <insert id="insert">
         insert into book(author,publisher,title) values(#{author},#{publisher},#{title});
     </insert>
